@@ -14,23 +14,29 @@
 
 	main 메소드 시작
 
-		접두어 추출할 단어들 : String 타입 배열 firstWordList 선언, 초기값 주입
+		접두어 길이 구하는 메소드로, 입력된 단어들의 접두어 길이 구하고 출력
 
-		접두어 : String 타입 firstHeadWord 선언, 초기값 ""
+	main 메소드 종료
 
-		접두어 길이 : int 타입 firstHeadWordCount 선언, 초기값 0
+	접두어 길이 구하는 메소드 시작
 
-		반복문 실행 여부 : boolean 타입 flag 선언, 초기값 true
+		접두어 추출할 단어들 : String 배열 선언, 초기값 주입
 
-		반복문 시작 - int 타입 j 를 1부터 firstWordList의 첫번째 단어 길이까지 1씩 증가
+		접두어 : String 선언, 초기값 ""
 
-			임시변수 temp : firstWordList 의 첫번째 단어를 앞에서 j 개수 만큼 자른 값
+		접두어 길이 : int 선언, 초기값 0
 
-			반복문 시작 - int 타입 i 를 1부터 firstWordList 배열의 길이 보다 작을동안 1씩 증가
+		반복문 실행 여부 : boolean 선언, 초기값 true
 
-				조건문 시작 - firstWordList 배열의 i 번째 위치에 있는 단어가 temp 로 시작하지 않는다면
+		반복문 시작 - int 를 1부터, 배열의 첫번째 단어 길이까지 1씩 증가
 
-					flag 의 값을 false
+			임시변수 : 배열의 첫번째 단어를 앞에서 int 값 만큼 잘라 얻음
+
+			반복문 시작 - int 를 1부터, 배열의 길이 보다 작을동안 1씩 증가
+
+				조건문 시작 - 배열의 int 번째 위치에 있는 단어가 임시변수로 시작하지 않는다면
+
+					반복문 실행 여부의 값을 false
 
 					반복문 종료
 
@@ -38,21 +44,23 @@
 
 			반복문 끝
 			
-			조건문 시작 - flag 값이 false 일때
+			조건문 시작 - 반복문 실행 여부 값이 false 일때
 
 				반복문 중지
 
 			조건문 끝
 
-			firstHeadWordCount 의 값을 j
+			접두어 길이의 값을 j
 
-			firstHeadWord 의 값을 temp
+			접두어의 값을 temp
 
 		반복문 끝
 
-		구해낸 접두어와 접두어 길이 출력
+		구해낸 접두어 출력
 
-	main 메소드 종료
+		구해낸 접두어 길이 반환
+
+	접두어 길이 구하는 메소드 종료
 
 공개된 클래스 test 종료
 ```
@@ -65,21 +73,27 @@ public class test {
 
 	public static void main(String[] args) {
 
-		String[] firstWordList = { "hojin", "hoo", "how" };
+		System.out.println("wordPrefixCnt = " + Solve(args));
 
-		String firstHeadWord = "";
+	}
 
-		int firstHeadWordCount = 0;
+	public static int Solve(String[] args) {
+
+		String[] wordArray = args;
+
+		String wordPrefix = "";
+
+		int wordPrefixCnt = 0;
 
 		boolean flag = true;
 
-		for (int j = 1; j <= firstWordList[0].length(); j++) {
+		for (int j = 1; j <= wordArray[0].length(); j++) {
 
-			String temp = firstWordList[0].substring(0, j);
+			String temp = wordArray[0].substring(0, j);
 
-			for (int i = 1; i < firstWordList.length; i++) {
+			for (int i = 1; i < wordArray.length; i++) {
 
-				if (!firstWordList[i].startsWith(temp)) {
+				if (!wordArray[i].startsWith(temp)) {
 
 					flag = false;
 
@@ -95,13 +109,15 @@ public class test {
 
 			}
 
-			firstHeadWordCount = j;
+			wordPrefixCnt = j;
 
-			firstHeadWord = temp;
+			wordPrefix = temp;
 
 		}
 
-		System.out.println("firstHeadWord = " + firstHeadWord + ", firstHeadWordCount = " + firstHeadWordCount);
+		System.out.println("wordPrefix = " + wordPrefix);
+
+		return wordPrefixCnt;
 
 	}
 
