@@ -88,7 +88,7 @@ public class test {
 		boolean flag = true;
 
 		for (int j = 1; j <= wordArray[0].length(); j++) {
-			//정말로 의마가 없는 변수? 만약 의미가 있으면 temp외의 이름으로 짓는 것이 좋을듯
+
 			String temp = wordArray[0].substring(0, j);
 
 			for (int i = 1; i < wordArray.length; i++) {
